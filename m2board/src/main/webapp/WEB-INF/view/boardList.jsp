@@ -11,7 +11,7 @@
 	<h1>게시판 목록</h1>
 
 	<div>
-		<a href="${pageContext.request.contextPath}/addBoard.jsp"> 글쓰기 </a>
+		<a href="${pageContext.request.contextPath}/insertBoard.jsp"> 글쓰기 </a>
 	</div>
 
 	<table border="1">
@@ -22,19 +22,24 @@
 				<th>제목</th>
 				<th>작성일</th>
 				<th>조회</th>
+				<th>좋아요</th>
 			</tr>
 		</thead>
+		
 		<tbody>
+		
 			<c:forEach var="b" items="${list}">
+			<tr>
 				<td>${b.boardNo}</td>
 				<!-- b.getBoardNo() -->
 				<td>${b.memberId}</td>
-				<td><a
-					href="${pageContext.request.contextPath}/boardOne?boardNo=${b.boardNo}">
-						${b.title} </a></td>
+				<td><a href="${pageContext.request.contextPath}/boardOne?boardNo=${b.boardNo}"> ${b.title} </a></td>
 				<td>${b.createDate}</td>
 				<td>${b.boardRead}</td>
+				<td>${b.boardNice}</td>
+			</tr>
 			</c:forEach>
+			
 		</tbody>
 	</table>
 	<div>

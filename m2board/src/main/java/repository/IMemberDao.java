@@ -1,12 +1,14 @@
 package repository;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 
 import vo.Member;
 
 public interface IMemberDao {
-	// 매개값 : id , pw
-	// 반환값 : 세션에 저장될 Member의 정보 일부
-	Member selectMember(Connection conn,Member member);
+	
+	// 로그인
+	Member selectMember(Connection conn,Member member) throws SQLException; //ID,PASSWORD 두개를 받아줘야함
+	
 
 }

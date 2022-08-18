@@ -1,9 +1,12 @@
 package service;
 
+import java.sql.SQLException;
+
 import vo.Member;
 
 public interface IMemberService {
 	
-	Member getMemberByLogin(Member paramMember);
-	
+		// 로그인
+		Member loginMember(Member member) ;
+		
 }

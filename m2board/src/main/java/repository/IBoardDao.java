@@ -5,13 +5,20 @@ import java.sql.SQLException;
 import java.util.List;
 
 import vo.Board;
+import vo.Member;
 
 public interface IBoardDao {
 	
-	List<Board> selectBoardListByPage(Connection conn,int rowPerPage, int beginRow) throws SQLException; // 페이징할거라서 rowPerPage, beginRow주기 
+	// 게시판 목록 -> 페이징할거라서 rowPerPage, beginRow주기 
+	List<Board> selectBoardListByPage(Connection conn,int rowPerPage, int beginRow) throws SQLException; 
 		
-	int selectBoardCnt(Connection conn,int roePerPage) throws SQLException;	
+	int selectBoardCnt(Connection conn,int rowPerPage) throws SQLException;	
 	
-	Board selectBoardOne(Connection conn,Board board);
+	// 게시판 상세보기
+	List<Board> selectBoardOne(Connection conn,int boardNo) throws SQLException;
 
+	// 게시판 입력하기
+	int insertBoard(Connection conn,Board board);
+	
+	
 }

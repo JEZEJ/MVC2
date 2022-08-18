@@ -7,22 +7,26 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import service.IMemberService;
+import service.IBoardService;
 
 
-@WebServlet("/login")
-public class LoginController extends HttpServlet {
+@WebServlet("/BoardInsert")
+public class BoardInsertController extends HttpServlet {
 	
-	private IMemberService memberService;
+	private IBoardService boardService;
 
-	// form
+	//form
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String ID = request.getParameter("member_id");
-		String PW = request.getParameter("member_pw");
-		//뷰 포워딩
-		request.getRequestDispatcher("/WEB-INF/view/login.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/view/insertBoard.jsp").forward(request, response);
 	
+	}
+	
+	//action
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		
+		
 	}
 
 }

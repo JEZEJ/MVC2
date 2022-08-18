@@ -8,7 +8,14 @@ public class Board {
 	private String boardContent;
 	private String createDate;
 	private int boardRead;
+	private int boardNice;
 	
+	public int getBoardNice() {
+		return boardNice;
+	}
+	public void setBoardNice(int boardNice) {
+		this.boardNice = boardNice;
+	}
 	public int getBoardNo() {
 		return boardNo;
 	}

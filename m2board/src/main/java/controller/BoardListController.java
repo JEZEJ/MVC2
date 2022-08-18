@@ -33,8 +33,8 @@ public class BoardListController extends HttpServlet {
 		
 		Map<String, Object> map = boardService.getBoardList(ROW_PER_PAGE, currentPage);
 	
-		request.setAttribute("lastPage", map.get("lastPage"));
 		request.setAttribute("list", map.get("list"));
+		request.setAttribute("lastPage", map.get("lastPage"));
 		request.setAttribute("currentPage", map.get("currentPage"));
 		
 		// 3) 뷰 포워딩
