@@ -10,7 +10,7 @@ public class DBUtil {
 		
 		Class.forName("org.mariadb.jdbc.Driver");		
 		
-		String url = "jdbc:mariadb://localhost:3306/shop";
+		String url = "jdbc:mariadb://localhost:3306/m2board";
 		String dbuser = "root";
 		String dbpw = "1234";
 		

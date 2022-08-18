@@ -8,12 +8,10 @@ import vo.Board;
 
 public interface IBoardDao {
 	
-	
-	List<Board> selectBoardListByPage(Connection conn,int rowPerPage, int beginRow); // 페이징할거라서 rowPerPage, beginRow주기 
+	List<Board> selectBoardListByPage(Connection conn,int rowPerPage, int beginRow) throws SQLException; // 페이징할거라서 rowPerPage, beginRow주기 
 		
-	int selectBoardCnt();	
+	int selectBoardCnt(Connection conn,int roePerPage) throws SQLException;	
 	
-	Board selectBoardList(Connection conn,Board board);
 	Board selectBoardOne(Connection conn,Board board);
 
 }

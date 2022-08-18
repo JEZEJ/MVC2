@@ -3,11 +3,11 @@ package vo;
 public class Board {
 	
 	private int boardNo;
-	private String boardTitle;
-	private String boardWriter;
+	private String memberId;
+	private String title;
+	private String boardContent;
 	private String createDate;
 	private int boardRead;
-	private int boardNice;
 	
 	public int getBoardNo() {
 		return boardNo;
@@ -15,17 +15,23 @@ public class Board {
 	public void setBoardNo(int boardNo) {
 		this.boardNo = boardNo;
 	}
-	public String getBoardTitle() {
-		return boardTitle;
+	public String getMemberId() {
+		return memberId;
 	}
-	public void setBoardTitle(String boardTitle) {
-		this.boardTitle = boardTitle;
+	public void setMemberId(String memberId) {
+		this.memberId = memberId;
 	}
-	public String getBoardWriter() {
-		return boardWriter;
+	public String getTitle() {
+		return title;
 	}
-	public void setBoardWriter(String boardWriter) {
-		this.boardWriter = boardWriter;
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public String getBoardContent() {
+		return boardContent;
+	}
+	public void setBoardContent(String boardContent) {
+		this.boardContent = boardContent;
 	}
 	public String getCreateDate() {
 		return createDate;
@@ -39,22 +45,5 @@ public class Board {
 	public void setBoardRead(int boardRead) {
 		this.boardRead = boardRead;
 	}
-	public int getBoardNice() {
-		return boardNice;
-	}
-	public void setBoardNice(int boardNice) {
-		this.boardNice = boardNice;
-	}
 	
-	public Board(int boardNo, String boardTitle, String boardWriter, String createDate, int boardRead, int boardNice) {
-		super();
-		this.boardNo = boardNo;
-		this.boardTitle = boardTitle;
-		this.boardWriter = boardWriter;
-		this.createDate = createDate;
-		this.boardRead = boardRead;
-		this.boardNice = boardNice;
-	}
-	
-
 }
