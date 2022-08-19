@@ -11,7 +11,7 @@
 	<h1>게시판 목록</h1>
 
 	<div>
-		<a href="${pageContext.request.contextPath}/insertBoard.jsp"> 글쓰기 </a>
+		<a href="${pageContext.request.contextPath}/boardInsert"> 글쓰기 </a>
 	</div>
 
 	<table border="1">

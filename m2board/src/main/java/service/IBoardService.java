@@ -16,9 +16,12 @@ public interface IBoardService {
 	// 게시글 상세보기
 	List<Board> getBoardOne(int boardNo); //vo안에 Board에 있는 값이랑 파라미터랑 똑같이줘야함
 	
+	// 게시글 입력하기
+	int insertBoard(Board board);
+	
+	// 조회수 수정
+	int modifyNice(int BoardNo);
 	
 	
-	
-	
-	
+
 }

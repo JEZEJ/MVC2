@@ -7,10 +7,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import service.BoardService;
 import service.IBoardService;
+import vo.Board;
 
 
-@WebServlet("/BoardInsert")
+@WebServlet("/boardInsert")
 public class BoardInsertController extends HttpServlet {
 	
 	private IBoardService boardService;
@@ -24,6 +26,25 @@ public class BoardInsertController extends HttpServlet {
 	
 	//action
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		request.setCharacterEncoding("UTF-8");
+		
+		boardService = new BoardService();
+		Board board = new Board();
+		
+		String writer = request.getParameter("member_id");
+		String title = request.getParameter("board_title");
+		String content = request.getParameter("board_content");
+		
+		board.setMemberId(writer);
+		board.setTitle(title);
+		board.setBoardContent(content);
+		
+		if(boardService.insertBoard(board) == 0) {
+			response.sendRedirect(request.getContextPath() + "/boardInsert");
+		} else {
+			response.sendRedirect(request.getContextPath() + "/boardList"); //boardList서블릿
+		}		
 		
 		
 		

@@ -11,7 +11,7 @@
 	<h1>게시판 상세보기</h1>
 
 	<div>
-		<a href="${pageContext.request.contextPath}/insertBoard.jsp"> 글쓰기
+		<a href="${pageContext.request.contextPath}/boardInsert"> 글쓰기
 		</a>
 	</div>
 
@@ -43,8 +43,8 @@
 					<td>${b.boardRead}</td>
 				</tr>
 				<tr>
-					<th>좋아요</th>
-					<td>${b.boardNice}</td>
+					<th>좋아요</th><!-- 상세보기에서 추천누르면 좋아요수가 올라가게 설정 -->
+					 <td><a href="${pageContext.request.contextPath}/boardNice?boardNo=${b.boardNo}&boardNice=${b.boardNice}">추천</a></td>
 				</tr>
 			</c:forEach>
 		</tbody>

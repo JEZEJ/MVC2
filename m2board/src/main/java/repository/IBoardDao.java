@@ -18,7 +18,13 @@ public interface IBoardDao {
 	List<Board> selectBoardOne(Connection conn,int boardNo) throws SQLException;
 
 	// 게시판 입력하기
-	int insertBoard(Connection conn,Board board);
+	int insertBoard(Connection conn,Board board) throws SQLException;
+	
+	// 조회수 올리기
+	int updateReadCount(Connection conn, int BoardNo) throws SQLException;
+	
+	// 좋아요 올리기
+	int updateNice(Connection conn,int BoardNo) throws SQLException;
 	
 	
 }
