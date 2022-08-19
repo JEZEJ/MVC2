@@ -8,8 +8,11 @@ public class Member {
 	private String memberName;
 	private int memberAge;
 	private String memberAddress;
+	private String memberDetailAddress;
 	private String memberPhone;
 	private String createDate;
+	
+	// getter setter
 	public int getMemberNo() {
 		return memberNo;
 	}
@@ -45,6 +48,12 @@ public class Member {
 	}
 	public void setMemberAddress(String memberAddress) {
 		this.memberAddress = memberAddress;
+	}
+	public String getMemberDetailAddress() {
+		return memberDetailAddress;
+	}
+	public void setMemberDetailAddress(String memberDetailAddress) {
+		this.memberDetailAddress = memberDetailAddress;
 	}
 	public String getMemberPhone() {
 		return memberPhone;

@@ -1,34 +1,59 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<title>AddMember</title>
+<script
+   src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
-   <h1>회원가입 폼</h1>
-   <form>
-      <div>
-         ID : <input type="text" name="id" id="id">
-      </div>
-      <div>
-         addr : <input type="text" name="addr" id="addr" readonly="readonly">
-         <button type="button" id="addrBtn" onclick="sample2_execDaumPostcode()">주소검색</button>
-         <br>
-         detailAddr : <input type="text" name="detailAddr" id="detailAddr">
-      </div>
+   <h1>회원가입</h1>
+   <form method="post" action="${pageContext.request.contextPath}/addMember">
+   <table border="1">
+      <tr>
+         <td>ID : <input type="text" name="member_id" id="member_id"></td>
+      </tr>
+      <tr>
+         <td>비밀번호 : <input type="password" name="member_pw" id="member_pw"></td>
+      </tr>
+      <tr>
+         <td>이름 : <input type="text" name="member_name" id="member_name"></td>
+      </tr>
+      <tr>
+         <td>나이 : <input type="text" name="member_age" id="member_age"></td>
+      </tr>
+      <tr>
+         <td>전화번호 : <input type="text" name="member_phone" id="member_phone"></td>
+      </tr>
+      <tr>
+         <td>주소 : <input type="text" name="member_address" id="member_address" readonly="readonly">
+            <button type="button" id="addrBtn">주소검색</button> <br> 
+            상세주소 : <input type="text" name="member_detailAddress" id="member_detailAddress"></td>
+      </tr>
+   </table>
+   <button type="submit">가입</button>
    </form>
-   
-   
 
-<!-- iOS에서는 position:fixed 버그가 있음, 적용하는 사이트에 맞게 position:absolute 등을 이용하여 top,left값 조정 필요 -->
-<div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:1;-webkit-overflow-scrolling:touch;">
-<img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnCloseLayer" style="cursor:pointer;position:absolute;right:-3px;top:-3px;z-index:1" onclick="closeDaumPostcode()" alt="닫기 버튼">
-</div>
+   <!-- iOS에서는 position:fixed 버그가 있음, 적용하는 사이트에 맞게 position:absolute 등을 이용하여 top,left값 조정 필요 -->
+   <div id="layer"
+      style="display: none; position: fixed; overflow: hidden; z-index: 1; -webkit-overflow-scrolling: touch;">
+      <img src="//t1.daumcdn.net/postcode/resource/images/close.png"
+         id="btnCloseLayer"
+         style="cursor: pointer; position: absolute; right: -3px; top: -3px; z-index: 1"
+         onclick="closeDaumPostcode()" alt="닫기 버튼">
+   </div>
 
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
+   $('#addrBtn').click(function(){
+      sample2_execDaumPostcode();
+   });
+</script>
+
+   <script
+      src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+   <script>
     // 우편번호 찾기 화면을 넣을 element
     var element_layer = document.getElementById('layer'); 
 
@@ -81,7 +106,7 @@
                 // document.getElementById("sample2_address").value = addr;
                 
                 // $('#addr').val(data.zonecode + ' ' + addr);
-                document.getElementById('addr').value = data.zonecode + ' ' + addr;
+                document.getElementById('member_address').value = data.zonecode + ' ' + addr;
                 
                 
                 // 커서를 상세주소 필드로 이동한다.

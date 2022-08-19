@@ -96,21 +96,21 @@ public class BoardService implements IBoardService {
 
 		return list;
 	}
-	
+
 	@Override // 게시글 입력하기
 	public int insertBoard(Board board) {
-		
+
 		int row = 0;
 		Connection conn = null;
-		
+
 		try {
-			
+
 			conn = new DBUtil().getConnection(); // mariadb랑 연동해줌
 			conn.setAutoCommit(false);
-			
+
 			BoardDao boardDao = new BoardDao();
 			row = boardDao.insertBoard(conn, board);
-			
+
 			if (row == 0) {
 				throw new Exception();
 
@@ -133,8 +133,49 @@ public class BoardService implements IBoardService {
 
 		return row;
 	}
+	
 
 	@Override // 조회수 수정
+	public int modifyRead(int boardNo) {
+
+		System.out.println("BoardService안에있는 modifyRead 실행");
+
+		int row = 0;
+		Connection conn = null;
+
+		try {
+
+			conn = new DBUtil().getConnection();
+			conn.setAutoCommit(false);
+
+			BoardDao boardDao = new BoardDao();
+			row = boardDao.updateReadCount(conn, boardNo);
+
+			if (row == 0) {
+
+				throw new Exception();
+			}
+			conn.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			try {
+				conn.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return row;
+
+	}
+
+	@Override // 좋아요 수정
 	public int modifyNice(int BoardNo) {
 
 		System.out.println("BoardService안에있는 modifyNice 실행");

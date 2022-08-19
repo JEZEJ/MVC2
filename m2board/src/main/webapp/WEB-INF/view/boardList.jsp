@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>BoardList</title>
 </head>
 <body>
 	<h1>게시판 목록</h1>
@@ -33,7 +33,7 @@
 				<td>${b.boardNo}</td>
 				<!-- b.getBoardNo() -->
 				<td>${b.memberId}</td>
-				<td><a href="${pageContext.request.contextPath}/boardOne?boardNo=${b.boardNo}"> ${b.title} </a></td>
+				<td><a href="${pageContext.request.contextPath}/boardOne?boardNo=${b.boardNo}"> ${b.title}</a></td>
 				<td>${b.createDate}</td>
 				<td>${b.boardRead}</td>
 				<td>${b.boardNice}</td>

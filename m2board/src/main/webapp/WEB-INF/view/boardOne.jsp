@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>BoardOne</title>
 </head>
 <body>
 	<h1>게시판 상세보기</h1>

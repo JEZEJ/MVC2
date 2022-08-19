@@ -19,7 +19,12 @@ public interface IBoardService {
 	// 게시글 입력하기
 	int insertBoard(Board board);
 	
+
+	
 	// 조회수 수정
+	int modifyRead(int boardNo);
+	
+	// 좋아요 수정
 	int modifyNice(int BoardNo);
 	
 	

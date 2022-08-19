@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title><!-- 외래키를 줘서 아이디가 있는것만 쓸수있음 -->
+<title>InsertBoard</title><!-- 외래키를 줘서 아이디가 있는것만 쓸수있음 -->
 </head>
 <body>
 	<h3>게시글 작성</h3>

@@ -70,7 +70,7 @@ public class BoardDao implements IBoardDao { // 인터페이스 IBoardDao를 사
 		return list;
 	}
 
-	@Override
+	@Override // 게시물 갯수 세주기
 	public int selectBoardCnt(Connection conn, int rowPerPage) throws SQLException {
 
 		System.out.println("BoardDao안에있는 selectBoardCnt실행");
@@ -160,7 +160,6 @@ public class BoardDao implements IBoardDao { // 인터페이스 IBoardDao를 사
 		return list;
 	}
 
-	
 	@Override // 게시판 입력
 	public int insertBoard(Connection conn, Board board) throws SQLException {
 
@@ -182,8 +181,12 @@ public class BoardDao implements IBoardDao { // 인터페이스 IBoardDao를 사
 			row = stmt.executeUpdate();
 		} finally {
 
-			if (rset != null) { rset.close(); }
-			if (stmt != null) { stmt.close(); }
+			if (rset != null) {
+				rset.close();
+			}
+			if (stmt != null) {
+				stmt.close();
+			}
 		}
 
 		System.out.println("BoardDao.insertBoard 안에 있는 row : " + row);
@@ -191,7 +194,31 @@ public class BoardDao implements IBoardDao { // 인터페이스 IBoardDao를 사
 		return row;
 	}
 
-	@Override // 조회수 올리기 -- 해야함
+	
+	@Override // 게시물 수정하기
+	public int updateBoard(Connection conn, Board board) throws SQLException {
+		
+		System.out.println("BoardDao안에있는 updateBoard실행");
+		
+		Board updateBoard = null;
+		
+		//  ex ) UPDATE board SET board_title='제제의하루',board_content='없다' WHERE member_id='zeze';
+		String sql = "UPDATE board SET board_title=?,board_content=? WHERE member_id=?";
+		
+		PreparedStatement stmt = null;
+		updateBoard = new Board();
+		
+		try {
+			stmt = conn.prepareStatement(sql);
+			stmt.setString(1, board.getTitle());
+			stmt.setString(2, board.getBoardContent());
+		}
+		
+		
+		return row;
+	}
+
+	@Override // 조회수 올리기
 	public int updateReadCount(Connection conn, int BoardNo) throws SQLException {
 
 		System.out.println("BoardDao안에있는 updateReadCount실행");
@@ -234,11 +261,12 @@ public class BoardDao implements IBoardDao { // 인터페이스 IBoardDao를 사
 			stmt.setInt(1, BoardNo);
 
 			row = stmt.executeUpdate();
-			
+
 		} finally {
+			
 			if (stmt != null) { stmt.close(); }
 		}
-		
+
 		return row;
 
 	}

@@ -17,18 +17,13 @@ public class LoginController extends HttpServlet {
 
 	private IMemberService memberService;
 	
+	
 	// 서블릿은 get은 form으로 post는 action으로 사용함
 
 	// form
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		HttpSession session = request.getSession();
-		if (session.getAttribute("loginMember") != null) { // null이 아니면 로그인이 되어있는 상태
-			response.sendRedirect(request.getContextPath() + "/index");
-			return;
-		}
-
-		// 뷰 포워딩
+		// 뷰 포워딩 (뷰 있는곳으로 이동)
 		request.getRequestDispatcher("/WEB-INF/view/login.jsp").forward(request, response);
 
 	}
@@ -36,29 +31,33 @@ public class LoginController extends HttpServlet {
 	// Action
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		HttpSession session = request.getSession();
-		if (session.getAttribute("loginMember") != null) { // null이 아니면 로그인이 되어있는 상태
-			response.sendRedirect(request.getContextPath() + "/index");
-			return;
-		}
-		
 		request.setCharacterEncoding("UTF-8"); // 인코딩해주기
 		
-		Member member = new Member();
+		String id = request.getParameter("member_id");
+		String pw = request.getParameter("member_pw");
+		String name = request.getParameter("memberName");
 		
-		member.setMemberId(request.getParameter("member_id"));
-		member.setMemberPw(request.getParameter("member_pw"));
+		Member member = new Member();
+		member.setMemberId(id);
+		member.setMemberPw(pw);
 		
 		MemberService memberService = new MemberService();
 		
 		Member loginMember = memberService.loginMember(member);
+		System.out.println("loginMember : "+loginMember);
+		
 		
 		if(loginMember == null) {
 			System.out.println("로그인실패");
-			response.sendRedirect(request.getContextPath() + "/login.jsp");
+			response.sendRedirect(request.getContextPath() + "/login");
 			return;
+		} else {
+			System.out.println("성공");
+			// 로그인이 성공했을때 세션에 값 저장
+			HttpSession session = request.getSession(); // 세션을 꺼내쓰고 싶으면 선언
+			session.setAttribute("loginMember",member); // 이 안에 id pw두개가 들어가있음
 		}
-		session.setAttribute("loginMember", loginMember);
+		
 		response.sendRedirect(request.getContextPath()+"/index");
 		
 	}
